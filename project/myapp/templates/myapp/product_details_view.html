@@ -1,0 +1,52 @@
+{% extends  'myapp/index.html' %}
+{% load static %}
+
+{% block body %}
+
+<center>
+<br><br>
+    <h3>Product Details</h3>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col">
+                <form role="form" name="frm" method="post" action="{% url 'product_details_view' %}">
+                    {%csrf_token%}
+                    <a href="{%url 'product_details_add'%}">Add New</a>
+                    <div class="container">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Product</th>
+                                <th>Sub Category</th>
+                                <th>Category</th>
+
+                            </tr>
+                            </thead>
+
+                            {% for pd in product_list %}
+                            <tbody>
+                            <tr>
+                                <td>{{pd.id}}</td>
+                                <td>{{pd.product}}</td>
+                                <td>{{pd.sub_category}}</td>
+                                <td>{{pd.category}}</td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+
+                <p class="text-info">{{msg}}</p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</center>
+{% endblock %}

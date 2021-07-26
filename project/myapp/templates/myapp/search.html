@@ -1,0 +1,22 @@
+{% extends 'myapp/index.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block body %}
+<center>
+    	<style>
+  input {max-width: 18em};
+	</style>
+    <h2><font color="#366092"></font></h2>
+    <div class="container">
+    <form name="frm"  role="form" action="{% url 'search' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="query"></label>
+                <input class="form-control" type="text" name="query" placeholder="Search Product" id="query">
+            </div>
+        <button type="submit" class="btn btn-info" id="bt" name="bt">Search</button>
+        {{msg}}
+        </form>
+    </div>
+</center>
+{% endblock %}
